@@ -4,12 +4,17 @@ import Book from './Book.js'
 class Shelf extends React.Component {
   render() {
     return <div className="bookshelf">
-      <h2 className="bookshelf-title">Currently Reading</h2>
+      <h2 className="bookshelf-title" id={this.props.id}>{this.props.title}</h2>
       <div className="bookshelf-books">
         <ol className="books-grid">
-          <li>
-            <Book />
-          </li>
+          { this.props.books
+            .filter(book => book.shelf === this.props.id)
+            .map(book => (
+              <li>
+                <Book />
+              </li>
+            ))
+          }
         </ol>
       </div>
     </div>
