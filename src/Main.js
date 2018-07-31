@@ -5,16 +5,16 @@ import Shelf from './Shelf.js'
 
 class Main extends React.Component {
   render() {
+    console.log(this.props.books)
     return <div className="list-books">
       <div className="list-books-title">
         <h1>MyReads</h1>
       </div>
       <div className="list-books-content">
         <div>
-          //doesn't work like this
-          <Shelf books={this.state.books} title='Currently Reading' id='currentlyReading'/>
-          <Shelf books={this.state.books} title='Want to Read' id='wantToRead'/>
-          <Shelf books={this.state.books} title='Read' id='read'/>
+          <Shelf books={this.props.books} title='Currently Reading' id='currentlyReading'/>
+          <Shelf books={this.props.books} title='Want to Read' id='wantToRead'/>
+          <Shelf books={this.props.books} title='Read' id='read'/>
         </div>
       </div>
       <div className="open-search">

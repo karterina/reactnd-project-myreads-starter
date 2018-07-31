@@ -8,10 +8,10 @@ class Shelf extends React.Component {
       <div className="bookshelf-books">
         <ol className="books-grid">
           { this.props.books
-            .filter(book => book.shelf === this.props.id)
+            .filter(book => (book.shelf === this.props.id))
             .map(book => (
-              <li>
-                <Book />
+              <li key={book.id}>
+                <Book book={book}/>
               </li>
             ))
           }
