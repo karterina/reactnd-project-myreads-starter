@@ -12,9 +12,9 @@ class Main extends React.Component {
       </div>
       <div className="list-books-content">
         <div>
-          <Shelf books={this.props.books} title='Currently Reading' id='currentlyReading'/>
-          <Shelf books={this.props.books} title='Want to Read' id='wantToRead'/>
-          <Shelf books={this.props.books} title='Read' id='read'/>
+          <Shelf updateLocation = {this.props.updateLocation} books={this.props.books} title='Currently Reading' id='currentlyReading'/>
+          <Shelf updateLocation = {this.props.updateLocation} books={this.props.books} title='Want to Read' id='wantToRead'/>
+          <Shelf updateLocation = {this.props.updateLocation} books={this.props.books} title='Read' id='read'/>
         </div>
       </div>
       <div className="open-search">

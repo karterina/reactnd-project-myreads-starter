@@ -10,14 +10,21 @@ class BooksApp extends React.Component {
   }
   // based on Udacity's React Fundamentals course
   componentDidMount() {
+    // books API method from readme
     BooksAPI.getAll().then((books) => {
       this.setState({ books })
     })
   }
+
+  updateLocation = (book, shelf) => {
+    // books API method from readme
+    BooksAPI.update(book, shelf)
+  }
+  
   render() {
     return (
       <div className="app">
-        <Main books={this.state.books}/>
+        <Main books={this.state.books} updateLocation = {this.updateLocation}/>
       </div>
     )
   }
