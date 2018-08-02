@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Shelf from './Shelf.js'
-
+import { Link } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 // this.props.books - доступ к стейт букс
 
 class Main extends React.Component {
@@ -18,7 +19,9 @@ class Main extends React.Component {
         </div>
       </div>
       <div className="open-search">
-        <a onClick={() => this.setState({ showSearchPage: true })}>Add a book</a>
+        <Link
+          to='/search'
+          className='add-book'>Add a book</Link>
       </div>
     </div>
 

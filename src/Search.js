@@ -1,18 +1,59 @@
 import React, { Component } from 'react'
+import * as BooksAPI from './BooksAPI'
+import Book from './Book.js'
+import { Link } from 'react-router-dom'
 
 class Search extends React.Component {
+
+  state = {
+    query: '',
+    searchedBooks: []
+  }
+
+  updateQuery = (query) => {
+    this.setState({ query: query });
+    this.fetchSearchedBooks(query)
+  }
+
+  fetchSearchedBooks = (query) => {
+    if (query) {
+      BooksAPI.search(query).then((fetchedBooks) => {
+        if (fetchedBooks.error) {
+          this.setState({searchedBooks: []})
+        } else {
+          this.setState({searchedBooks: fetchedBooks} )
+        }
+      })
+    } else {
+      this.setState({searchedBooks: []})
+    }
+  }
+
   render() {
+
     return <div className="search-books">
       <div className="search-books-bar">
-        <a className="close-search" onClick={() => this.setState({ showSearchPage: false })}>Close</a>
+        <Link
+          className="close-search"
+          to="/">Close</Link>
         <div className="search-books-input-wrapper">
-          {}
-          <input type="text" placeholder="Search by title or author"/>
+
+          <input type="text"
+                 placeholder="Search by title or author"
+                 value={this.state.query}
+                 onChange={(event) => this.updateQuery(event.target.value)}
+          />
 
         </div>
       </div>
       <div className="search-books-results">
-        <ol className="books-grid"></ol>
+        <ol className="books-grid">
+          {this.state.searchedBooks.map(book => (
+            <li key={book.id}>
+              <Book book={book} updateLocation={this.props.updateLocation}/>
+            </li>
+          ))}
+        </ol>
       </div>
     </div>
   }
