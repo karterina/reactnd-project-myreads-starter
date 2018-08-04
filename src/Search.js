@@ -29,7 +29,6 @@ class Search extends React.Component {
     }
   }
 
-
   render() {
 
     return <div className="search-books">
@@ -48,11 +47,17 @@ class Search extends React.Component {
         </div>
       </div>
       <div className="search-books-results">
+        {this.state.searchedBooks.length == 0 && this.state.query !== '' && (
+                <div className='no-results'>
+                  <h2>No books found</h2>
+                </div>
+              )
+        }
         <ol className="books-grid">
           {this.state.searchedBooks.map(book => (
-            <li key={book.id}>
-              <Book book={book} books={this.props.books} updateLocation={this.props.updateLocation}/>
-            </li>
+          <li key={book.id}>
+            <Book book={book} books={this.props.books} updateLocation={this.props.updateLocation}/>
+          </li>
           ))}
         </ol>
       </div>
