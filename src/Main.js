@@ -2,11 +2,10 @@ import React, { Component } from 'react'
 import Shelf from './Shelf.js'
 import { Link } from 'react-router-dom'
 import { Route } from 'react-router-dom'
-// this.props.books - доступ к стейт букс
 
 class Main extends React.Component {
+
   render() {
-    console.log(this.props.books)
     return <div className="list-books">
       <div className="list-books-title">
         <h1>MyReads</h1>

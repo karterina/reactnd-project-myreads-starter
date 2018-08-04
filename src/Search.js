@@ -29,6 +29,7 @@ class Search extends React.Component {
     }
   }
 
+
   render() {
 
     return <div className="search-books">
@@ -50,7 +51,7 @@ class Search extends React.Component {
         <ol className="books-grid">
           {this.state.searchedBooks.map(book => (
             <li key={book.id}>
-              <Book book={book} updateLocation={this.props.updateLocation}/>
+              <Book book={book} books={this.props.books} updateLocation={this.props.updateLocation}/>
             </li>
           ))}
         </ol>

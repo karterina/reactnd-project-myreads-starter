@@ -21,7 +21,8 @@ class BooksApp extends React.Component {
     // books API method from readme
     BooksAPI.update(book, shelf).then(response => {
       book.shelf = shelf;
-      let listBooks = this.state.books;
+      let listBooks = this.state.books.filter(aBook => (aBook.id !== book.id));
+      listBooks.push(book);
       this.setState({books: listBooks })
     })
   }
@@ -32,7 +33,9 @@ class BooksApp extends React.Component {
         <Route exact path="/" render = {() => (
           <Main books={this.state.books} updateLocation = {this.updateLocation}/>
         )}/>
-        <Route path="/search" component={Search}/>
+        <Route path="/search" render = {() => (
+          <Search books={this.state.books} updateLocation = {this.updateLocation}/>
+        )}/>
       </div>
     )
   }
