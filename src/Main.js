@@ -12,6 +12,7 @@ class Main extends React.Component {
       </div>
       <div className="list-books-content">
         <div>
+          {/* rendering three shelves with different titles */}
           <Shelf updateLocation = {this.props.updateLocation} books={this.props.books} title='Currently Reading' id='currentlyReading'/>
           <Shelf updateLocation = {this.props.updateLocation} books={this.props.books} title='Want to Read' id='wantToRead'/>
           <Shelf updateLocation = {this.props.updateLocation} books={this.props.books} title='Read' id='read'/>

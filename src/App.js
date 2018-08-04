@@ -9,7 +9,7 @@ class BooksApp extends React.Component {
   state = {
     books: []
   }
-  // based on Udacity's React Fundamentals course
+  // based on Udacity's React course
   componentDidMount() {
     // books API method from readme
     BooksAPI.getAll().then((books) => {
@@ -18,9 +18,10 @@ class BooksApp extends React.Component {
   }
 
   updateLocation = (book, shelf) => {
-    // books API method from readme
+    // books API method
     BooksAPI.update(book, shelf).then(response => {
       book.shelf = shelf;
+      // setting new state with updated shelf or new added book 
       let listBooks = this.state.books.filter(aBook => (aBook.id !== book.id));
       listBooks.push(book);
       this.setState({books: listBooks })

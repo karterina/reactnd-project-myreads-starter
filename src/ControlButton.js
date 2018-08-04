@@ -6,12 +6,12 @@ class ControlButton extends React.Component {
     const books = this.props.books;
     const book = this.props.book;
 
-    // setting the value of the select to the shelf of the book or creating the shelf
-    // attribute and setting it to none for the searched books
+    {/* setting the value of the select option to the shelf of the book or creating the shelf
+     and setting it to none for the searched books */}
     let shelf = book.shelf ? book.shelf : book.shelf = 'none';
 
-    // if a book in the searched books is already on a shelf
-    // set the value to the current shelf
+    {/* if a book in the searched books is already on a shelf
+     set the value to the current shelf */}
     for (let b of books) {
       if (b.id === book.id) {
         shelf = b.shelf;

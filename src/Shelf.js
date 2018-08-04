@@ -9,7 +9,6 @@ class Shelf extends React.Component {
       <div className="bookshelf-books">
         <ol className="books-grid">
           {this.props.books
-            // placing books on correct shelves
             .filter(book => (book.shelf === this.props.id))
             .map(book => (
               <li key={book.id}>

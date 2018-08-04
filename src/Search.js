@@ -10,13 +10,16 @@ class Search extends React.Component {
     searchedBooks: []
   }
 
+  // setting state with the input
+  // calling fetch books on every query change
   updateQuery = (query) => {
     this.setState({ query: query });
     this.fetchSearchedBooks(query)
   }
-
+  // based on study jam
   fetchSearchedBooks = (query) => {
     if (query) {
+      // method from BooksAPI
       BooksAPI.search(query).then((fetchedBooks) => {
         if (fetchedBooks.error) {
           this.setState({searchedBooks: []})
@@ -47,6 +50,7 @@ class Search extends React.Component {
         </div>
       </div>
       <div className="search-books-results">
+        {/* handling 'no results' scenarion */}
         {this.state.searchedBooks.length == 0 && this.state.query !== '' && (
                 <div className='no-results'>
                   <h2>No books found</h2>
@@ -54,6 +58,7 @@ class Search extends React.Component {
               )
         }
         <ol className="books-grid">
+          {/* mapping over searchedBooks to create each Book instance */}
           {this.state.searchedBooks.map(book => (
           <li key={book.id}>
             <Book book={book} books={this.props.books} updateLocation={this.props.updateLocation}/>
